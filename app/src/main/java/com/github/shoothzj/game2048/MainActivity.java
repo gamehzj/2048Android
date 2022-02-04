@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         GameViewModel model = new ViewModelProvider(this).get(GameViewModel.class);
-        tvScore = (TextView) findViewById(R.id.tvScore);
-        gameView = (GameView) findViewById(R.id.gameView);
+        tvScore = findViewById(R.id.tvScore);
+        gameView = findViewById(R.id.gameView);
         model.getScore().observe(this, integer -> tvScore.setText(String.valueOf(integer)));
         gameView.setGameViewCallback(new GameViewCallback() {
             @Override
