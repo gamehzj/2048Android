@@ -40,7 +40,4 @@ public class CardView extends FrameLayout {
         }
     }
 
-    public boolean equals(CardView o) {
-        return getNum() == o.getNum();
-    }
 }

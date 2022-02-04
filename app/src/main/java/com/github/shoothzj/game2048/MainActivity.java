@@ -4,47 +4,36 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.github.shoothzj.game2048.callback.GameViewCallback;
 import com.github.shoothzj.game2048.view.GameView;
+import com.github.shoothzj.game2048.vm.GameViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView tvScore;
     private GameView gameView;
-    private int score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        GameViewModel model = new ViewModelProvider(this).get(GameViewModel.class);
         tvScore = (TextView) findViewById(R.id.tvScore);
         gameView = (GameView) findViewById(R.id.gameView);
+        model.getScore().observe(this, integer -> tvScore.setText(String.valueOf(integer)));
         gameView.setGameViewCallback(new GameViewCallback() {
             @Override
             public void addScore(int num) {
-                MainActivity.this.addScore(num);
+                model.addScore(num);
             }
 
             @Override
             public void restartGame() {
-                MainActivity.this.clearScore();
+                model.setScore(0);
             }
         });
     }
-
-    public void clearScore() {
-        score = 0;
-        showScore();
-    }
-
-    public void showScore() {
-        tvScore.setText(String.valueOf(score));
-    }
-
-    public void addScore(int add) {
-        score += add;
-        showScore();
-    }
-
 }

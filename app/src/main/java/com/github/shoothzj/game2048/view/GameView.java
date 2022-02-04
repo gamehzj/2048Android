@@ -131,7 +131,7 @@ public class GameView extends GridLayout {
                             cardsMap[temp][y].setNum(0);
                             x--;
                             merge = true;
-                        } else if (cardsMap[x][y].equals(cardsMap[temp][y])) {
+                        } else if (cardsMap[x][y].getNum() == cardsMap[temp][y].getNum()) {
                             cardsMap[x][y].setNum(cardsMap[temp][y].getNum() * 2);
                             cardsMap[temp][y].setNum(0);
                             addScore(cardsMap[x][y].getNum());
@@ -159,7 +159,7 @@ public class GameView extends GridLayout {
                             cardsMap[temp][y].setNum(0);
                             x++;
                             merge = true;
-                        } else if (cardsMap[x][y].equals(cardsMap[temp][y])) {
+                        } else if (cardsMap[x][y].getNum() == cardsMap[temp][y].getNum()) {
                             cardsMap[x][y].setNum(cardsMap[temp][y].getNum() * 2);
                             cardsMap[temp][y].setNum(0);
                             addScore(cardsMap[x][y].getNum());
@@ -187,7 +187,7 @@ public class GameView extends GridLayout {
                             cardsMap[x][temp].setNum(0);
                             y--;
                             merge = true;
-                        } else if (cardsMap[x][y].equals(cardsMap[x][temp])) {
+                        } else if (cardsMap[x][y].getNum() == cardsMap[x][temp].getNum()) {
                             cardsMap[x][y].setNum(cardsMap[x][temp].getNum() * 2);
                             cardsMap[x][temp].setNum(0);
                             addScore(cardsMap[x][y].getNum());
@@ -215,7 +215,7 @@ public class GameView extends GridLayout {
                             cardsMap[x][temp].setNum(0);
                             y++;
                             merge = true;
-                        } else if (cardsMap[x][y].equals(cardsMap[x][temp])) {
+                        } else if (cardsMap[x][y].getNum() == cardsMap[x][temp].getNum()) {
                             cardsMap[x][y].setNum(cardsMap[x][temp].getNum() * 2);
                             cardsMap[x][temp].setNum(0);
                             addScore(cardsMap[x][y].getNum());
